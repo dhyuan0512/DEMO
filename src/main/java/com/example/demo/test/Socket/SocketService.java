@@ -17,7 +17,7 @@ public class SocketService {
 
     @RequestMapping("get")
     public void get() throws Exception {
-        ServerSocket ss = new ServerSocket(9999);
+        ServerSocket ss = new ServerSocket(8080);
         System.out.println("服务器端以及启动正在接受数据");
         Socket s = ss.accept();
         System.out.println("检测到客户端");

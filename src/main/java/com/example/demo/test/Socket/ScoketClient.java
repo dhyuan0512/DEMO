@@ -16,7 +16,7 @@ public class ScoketClient {
     @RequestMapping("/set")
     public void set() throws Exception {
         //1.连接诶服务器
-        Socket s = new Socket("127.0.0.1", 9999);
+        Socket s = new Socket("127.0.0.1", 8080);
         System.out.println("已连接到服务器9999端口，准备传送图片...");
         //获取图片字节流
         InputStream fis = new FileInputStream("src\\img\\1_2.jpg");
