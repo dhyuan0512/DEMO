@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册成功</title>
+</head>
+<body>
+<h1>注册成功！</h1>
+<div id="msg"></div>
+<script>
+    var times = 5;
+
+    function test() {
+        document.getElementById("msg").innerHTML = "页面将在" + times + "后跳转登录页面";
+        times -= 1;
+        if (times <= 0) {
+            window.clearInterval(doTEST);
+            window.location.href = "login";
+        }
+    }
+
+    var doTEST;
+    window.clearInterval(doTEST);
+    doTest = window.setInterval("test()", 1000);
+</script>
+</body>
+</html>
