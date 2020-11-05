@@ -1,6 +1,6 @@
 package com.example.demo.enums;
 
-public enum DemoEnum {
+public enum DemoEnum implements FastEnum {
     //成功处理
     SUCCESS("200","消息处理成功"),
     // 资源未找到
