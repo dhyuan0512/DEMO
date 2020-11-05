@@ -7,15 +7,16 @@ import com.example.demo.serviceimpl.UserServiceImpl;
 import com.example.demo.test.Thread.MoreThreadTest;
 import com.example.demo.test.Thread.MultiThreadTest;
 import com.example.demo.util.ConstantUtils;
+import com.example.demo.vo.DemoResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -77,19 +78,20 @@ public class UserBeanController {
         }
     }
 
-    @RequestMapping(value = "/setThread", method = RequestMethod.POST)
+    @GetMapping("/setThread")
     @ResponseBody
     public void setMessage() throws Exception {
         multiThreadTest.messageThread();
     }
 
-    @RequestMapping(value = "/getThread", method = RequestMethod.POST)
+    @GetMapping("/getThread")
     @ResponseBody
-    public void getMessage() throws Exception {
-        moreThreadTest.getMaxResult();
+    public DemoResult<List<WechatUser>> getMessage() throws Exception {
+        DemoResult<List<WechatUser>> maxResult = moreThreadTest.getMaxResult();
+        return DemoResult.success(maxResult.getData());
     }
 
-    @RequestMapping(value = "/get", method = RequestMethod.POST)
+    @GetMapping("/get")
     @ResponseBody
     public List<WechatUser> get() throws Exception {
         long start = System.currentTimeMillis();

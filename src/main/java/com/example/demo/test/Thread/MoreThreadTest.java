@@ -3,6 +3,7 @@ package com.example.demo.test.Thread;
 import com.example.demo.bean.WechatUser;
 import com.example.demo.mapper.WechatUserMapper;
 import com.example.demo.serviceimpl.UserServiceImpl;
+import com.example.demo.vo.DemoResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class MoreThreadTest {
     @Autowired
     private WechatUserMapper WechatUserMapper;
 
-    public List<WechatUser> getMaxResult() throws Exception {
+    public DemoResult<List<WechatUser>> getMaxResult() throws Exception {
 
         long start = System.currentTimeMillis();
         List<WechatUser> result = new ArrayList<>();//返回结果
@@ -55,6 +56,6 @@ public class MoreThreadTest {
         execservice.shutdown();  // 关闭线程池
         long end = System.currentTimeMillis();
         log.info("多线程Get.SQL获取数据结束，{}个线程获取数据{}条,处理数据过程时长{}毫秒\r\n",ThreadNum,count,(end-start));
-        return result;
+        return DemoResult.success(result);
     }
 }
