@@ -2,7 +2,7 @@ package com.example.demo.test.IO;
 
 import java.io.*;
 
-public class testInputStream {
+public class TestInputStream {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
         //读取文件

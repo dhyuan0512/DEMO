@@ -6,6 +6,7 @@ import com.example.demo.service.UserBeanService;
 import com.example.demo.serviceimpl.UserServiceImpl;
 import com.example.demo.test.Thread.MoreThreadTest;
 import com.example.demo.test.Thread.MultiThreadTest;
+import com.example.demo.util.ConstantUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -48,9 +51,12 @@ public class UserBeanController {
     }
 
     @RequestMapping(value = "/loginIn", method = RequestMethod.POST)
-    public String login(String name, String password) {
+    public String login(String name, String password, HttpServletRequest request) {
         UserBean userBean = userBeanServiceImpl.loginIn(name, password);
         if (userBean != null) {
+            //添加登录用户的Session
+            log.info("sessionId{},sessionValue{}",request.getSession().getId());
+            request.getSession().setAttribute(ConstantUtils.USER_SESSION_KEY,userBean);
             return "success";
         } else {
             return "error";
