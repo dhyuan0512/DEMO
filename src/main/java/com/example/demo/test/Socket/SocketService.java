@@ -1,6 +1,7 @@
 package com.example.demo.test.Socket;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.File;
@@ -15,7 +16,7 @@ import java.util.Date;
 @RequestMapping("api/socket/service/io")
 public class SocketService {
 
-    @RequestMapping("get")
+    @GetMapping("get")
     public void get() throws Exception {
         ServerSocket ss = new ServerSocket(8080);
         System.out.println("服务器端以及启动正在接受数据");
