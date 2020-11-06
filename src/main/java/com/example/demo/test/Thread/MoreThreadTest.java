@@ -23,7 +23,7 @@ public class MoreThreadTest {
     @Autowired
     private WechatUserMapper WechatUserMapper;
 
-    public DemoResult<List<WechatUser>> getMaxResult() throws Exception {
+    public List<WechatUser> getMaxResult() throws Exception {
 
         long start = System.currentTimeMillis();
         List<WechatUser> result = new ArrayList<>();//返回结果
@@ -56,6 +56,6 @@ public class MoreThreadTest {
         execservice.shutdown();  // 关闭线程池
         long end = System.currentTimeMillis();
         log.info("多线程Get.SQL获取数据结束，{}个线程获取数据{}条,处理数据过程时长{}毫秒\r\n",ThreadNum,count,(end-start));
-        return DemoResult.success(result);
+        return result;
     }
 }

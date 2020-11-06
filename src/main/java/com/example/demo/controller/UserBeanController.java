@@ -87,8 +87,8 @@ public class UserBeanController {
     @GetMapping("/getThread")
     @ResponseBody
     public DemoResult<List<WechatUser>> getMessage() throws Exception {
-        DemoResult<List<WechatUser>> maxResult = moreThreadTest.getMaxResult();
-        return DemoResult.success(maxResult.getData());
+        List<WechatUser>  maxResult = moreThreadTest.getMaxResult();
+        return DemoResult.success(maxResult);
     }
 
     @GetMapping("/get")
