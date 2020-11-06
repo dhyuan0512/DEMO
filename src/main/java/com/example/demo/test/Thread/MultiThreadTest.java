@@ -31,20 +31,20 @@ public class MultiThreadTest {
 
     public void messageThread() throws Exception {
         long start = System.currentTimeMillis();
-        DemoResult<List<WechatUser>> idList = moreThreadTest.getMaxResult();
+        List<WechatUser> idList = moreThreadTest.getMaxResult();
         // List<WechatUser> idList = userService.page();
         int threadNum = 10;
         ExecutorService executorService = Executors.newFixedThreadPool(threadNum);
         CountDownLatch countDownLatch = new CountDownLatch(threadNum);
-        int perSize = idList.getData().size() / threadNum;
-        log.info("多线程Insert.SQL处理数据开始,数据总数{}条,线程数量{}个\r\n", idList.getData().size() , threadNum);
+        int perSize = idList.size() / threadNum;
+        log.info("多线程Insert.SQL处理数据开始,数据总数{}条,线程数量{}个\r\n", idList.size() , threadNum);
         AtomicInteger successNum = new AtomicInteger(0);
         MultiThread thread = new MultiThread();
         for (int i = 0; i < threadNum; i++) {
             if (i == threadNum - 1) {
-                thread.setIdList(idList.getData().subList(i * perSize, idList.getData().size()));
+                thread.setIdList(idList.subList(i * perSize, idList.size()));
             } else {
-                thread.setIdList(idList.getData().subList(i * perSize, (i + 1) * perSize));
+                thread.setIdList(idList.subList(i * perSize, (i + 1) * perSize));
             }
             thread.setCountDownLatch(countDownLatch);
             thread.setSuccessNum(successNum);
