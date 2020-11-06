@@ -22,26 +22,15 @@ public enum DemoEnum implements FastEnum {
     }
 
     public String getCode() {
-        return code;
+        return this.code;
     }
 
     public String getMessage() {
-        return message;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
+        return this.message;
     }
 
     @Override
     public String toString() {
-        return "DemoEnum{" +
-                "code='" + code + '\'' +
-                ", message='" + message + '\'' +
-                '}';
+        return String.format("DemoEnum name = %s code = %s message = %s", this.name(), this.code, this.message);
     }
 }
