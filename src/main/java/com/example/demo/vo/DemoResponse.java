@@ -4,7 +4,7 @@ import com.example.demo.enums.DemoEnum;
 
 import java.io.Serializable;
 
-public class DemoResult<T> implements Serializable {
+public class DemoResponse<T> implements Serializable {
 
     /**
      * 是否响应成功
@@ -27,7 +27,7 @@ public class DemoResult<T> implements Serializable {
     /**
      * 无参构造器(构造器私有，外部不可以直接创建)
      */
-    private DemoResult() {
+    private DemoResponse() {
         this.code = "200";
         this.success = true;
     }
@@ -35,7 +35,7 @@ public class DemoResult<T> implements Serializable {
      * 有参构造器
      * @param obj
      */
-    private DemoResult(T obj) {
+    private DemoResponse(T obj) {
         this.code = "200";
         this.data = obj;
         this.success = true;
@@ -45,7 +45,7 @@ public class DemoResult<T> implements Serializable {
      * 有参构造器
      * @param resultCode
      */
-    private DemoResult(DemoEnum resultCode) {
+    private DemoResponse(DemoEnum resultCode) {
         this.success = true;
         this.code = resultCode.getCode();
         this.message = resultCode.getMessage();
@@ -57,8 +57,8 @@ public class DemoResult<T> implements Serializable {
      * @param <T>
      * @return
      */
-    public static<T> DemoResult<T> success(){
-        return new DemoResult();
+    public static<T> DemoResponse<T> success(){
+        return new DemoResponse();
     }
 
     /**
@@ -67,8 +67,8 @@ public class DemoResult<T> implements Serializable {
      * @param <T>
      * @return
      */
-    public static<T> DemoResult<T> success(T data){
-        return new DemoResult<T>(data);
+    public static<T> DemoResponse<T> success(T data){
+        return new DemoResponse<T>(data);
     }
 
     /**
@@ -77,8 +77,8 @@ public class DemoResult<T> implements Serializable {
      * @param <T>
      * @return
      */
-    public static<T> DemoResult<T> failure(DemoEnum resultCode){
-        return  new DemoResult<T>(resultCode);
+    public static<T> DemoResponse<T> failure(DemoEnum resultCode){
+        return  new DemoResponse<T>(resultCode);
     }
 
     public Boolean getSuccess() {

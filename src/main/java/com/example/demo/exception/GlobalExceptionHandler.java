@@ -2,7 +2,7 @@ package com.example.demo.exception;
 
 import com.alibaba.fastjson.JSON;
 import com.example.demo.enums.DemoEnum;
-import com.example.demo.vo.DemoResult;
+import com.example.demo.vo.DemoResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -18,14 +18,14 @@ public class GlobalExceptionHandler {
      * @return 封装的返回对象
      **/
     @ExceptionHandler(Exception.class)
-    public DemoResult handlerException(Exception e) {
+    public DemoResponse handlerException(Exception e) {
         DemoEnum demoEnum;
         // 其他异常，当我们定义了多个异常时，这里可以增加判断和记录
         demoEnum = DemoEnum.SERVER_ERROR;
         demoEnum.setCode(demoEnum.getCode());
         demoEnum.setMessage(e.getMessage());
         log.error("common exception:{}", JSON.toJSONString(e));
-        return DemoResult.failure(demoEnum);
+        return DemoResponse.failure(demoEnum);
     }
 
     /**

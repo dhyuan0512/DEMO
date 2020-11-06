@@ -7,7 +7,7 @@ import com.example.demo.serviceimpl.UserServiceImpl;
 import com.example.demo.test.Thread.MoreThreadTest;
 import com.example.demo.test.Thread.MultiThreadTest;
 import com.example.demo.util.ConstantUtils;
-import com.example.demo.vo.DemoResult;
+import com.example.demo.vo.DemoResponse;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,9 +86,9 @@ public class UserBeanController {
     @GetMapping("/getThread")
     @ResponseBody
     @ApiOperation(value = "多线程获取数据")
-    public DemoResult<List<WechatUser>> getMessage() throws Exception {
+    public DemoResponse<List<WechatUser>> getMessage() throws Exception {
         List<WechatUser>  maxResult = moreThreadTest.getMaxResult();
-        return DemoResult.success(maxResult);
+        return DemoResponse.success(maxResult);
     }
 
     @GetMapping("/get")
