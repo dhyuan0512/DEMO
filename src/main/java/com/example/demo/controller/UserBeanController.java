@@ -80,6 +80,7 @@ public class UserBeanController {
 
     @GetMapping("/setThread")
     @ResponseBody
+    @ApiOperation("多线程存入数据")
     public void setMessage() throws Exception {
         multiThreadTest.messageThread();
     }
