@@ -6,7 +6,7 @@ public enum DemoEnum implements FastEnum {
     // 资源未找到
     NOT_FOUND("404", "请求找不到"),
     // 服务器错误
-    SERVER_ERROR("500","系统繁忙,请稍后重试");
+    EXCEPTION("500","系统繁忙,请稍后重试");
     /**
      * 响应状态码
      */

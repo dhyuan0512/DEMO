@@ -1,125 +1,85 @@
 package com.example.demo.vo;
 
+import com.alibaba.fastjson.JSON;
 import com.example.demo.enums.DemoEnum;
 
 import java.io.Serializable;
 
-public class DemoResponse<T> implements Serializable {
-
-    /**
-     * 是否响应成功
-     */
-    private Boolean success;
-    /**
-     * 响应状态码
-     */
+public class DemoResponse<E> implements Serializable {
+    private static final long serialVersionUID = 7010064721473780599L;
     private String code;
-    /**
-     * 响应数据
-     */
-    private T data;
-    /**
-     * 错误信息
-     */
     private String message;
+    private String subMessage;
+    private E result;
 
-    // 构造器开始
-    /**
-     * 无参构造器(构造器私有，外部不可以直接创建)
-     */
-    private DemoResponse() {
-        this.code = "200";
-        this.success = true;
-    }
-    /**
-     * 有参构造器
-     * @param obj
-     */
-    private DemoResponse(T obj) {
-        this.code = "200";
-        this.data = obj;
-        this.success = true;
+    public DemoResponse() {
     }
 
-    /**
-     * 有参构造器
-     * @param resultCode
-     */
-    private DemoResponse(DemoEnum resultCode) {
-        this.success = true;
-        this.code = resultCode.getCode();
-        this.message = resultCode.getMessage();
-    }
-    // 构造器结束
-
-    /**
-     * 通用返回成功（没有返回结果）
-     * @param <T>
-     * @return
-     */
-    public static<T> DemoResponse<T> success(){
-        return new DemoResponse();
+    public DemoResponse(String code, String message) {
+        this.code = code;
+        this.message = message;
     }
 
-    /**
-     * 返回成功（有返回结果）
-     * @param data
-     * @param <T>
-     * @return
-     */
-    public static<T> DemoResponse<T> success(T data){
-        return new DemoResponse<T>(data);
+    public DemoResponse(String code, String message, String subMessage) {
+        this.code = code;
+        this.message = message;
+        this.subMessage = subMessage;
     }
 
-    /**
-     * 通用返回失败
-     * @param resultCode
-     * @param <T>
-     * @return
-     */
-    public static<T> DemoResponse<T> failure(DemoEnum resultCode){
-        return  new DemoResponse<T>(resultCode);
+    public DemoResponse(String code, String message, E result) {
+        this.code = code;
+        this.message = message;
+        this.result = result;
     }
 
-    public Boolean getSuccess() {
-        return success;
+    public DemoResponse(String code, String message, String subMessage, E result) {
+        this.code = code;
+        this.message = message;
+        this.subMessage = subMessage;
+        this.result = result;
     }
 
-    public void setSuccess(Boolean success) {
-        this.success = success;
+    public boolean isSuccess() {
+        return DemoEnum.SUCCESS.getCode().equals(this.code);
+    }
+
+    public boolean fail() {
+        return !this.isSuccess();
+    }
+
+    public String toString() {
+        return "FastResponse [code=" + this.code + ", message=" + this.message + ", subMessage=" + this.subMessage + ", result=" + JSON.toJSONString(this.result) + "]";
     }
 
     public String getCode() {
-        return code;
+        return this.code;
+    }
+
+    public String getMessage() {
+        return this.message;
+    }
+
+    public String getSubMessage() {
+        return this.subMessage;
+    }
+
+    public E getResult() {
+        return this.result;
     }
 
     public void setCode(String code) {
         this.code = code;
     }
 
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
     public void setMessage(String message) {
         this.message = message;
     }
 
-    @Override
-    public String toString() {
-        return "DemoResult{" +
-                "success=" + success +
-                ", code=" + code +
-                ", data=" + data +
-                ", message='" + message + '\'' +
-                '}';
+    public void setSubMessage(String subMessage) {
+        this.subMessage = subMessage;
+    }
+
+    public void setResult(E result) {
+        this.result = result;
     }
 }

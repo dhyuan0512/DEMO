@@ -6,6 +6,7 @@ import com.example.demo.service.UserBeanService;
 import com.example.demo.serviceimpl.UserServiceImpl;
 import com.example.demo.test.Thread.MoreThreadTest;
 import com.example.demo.test.Thread.MultiThreadTest;
+import com.example.demo.util.DemoResponseUtils;
 import com.example.demo.util.SessionUtils;
 import com.example.demo.vo.DemoResponse;
 import io.swagger.annotations.ApiOperation;
@@ -88,7 +89,7 @@ public class UserBeanController {
     @ApiOperation(value = "多线程获取数据")
     public DemoResponse<List<WechatUser>> getMessage() throws Exception {
         List<WechatUser>  maxResult = moreThreadTest.getMaxResult();
-        return DemoResponse.success(maxResult);
+        return DemoResponseUtils.success(maxResult);
     }
 
     @GetMapping("/get")
