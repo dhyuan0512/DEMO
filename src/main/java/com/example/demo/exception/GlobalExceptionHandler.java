@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 
 @RestControllerAdvice
-public class WebExceptionHandler {
+public class GlobalExceptionHandler {
 
-    private static final Logger log = LoggerFactory.getLogger(WebExceptionHandler.class);
+    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    public WebExceptionHandler() {
+    public GlobalExceptionHandler() {
     }
 
     @ExceptionHandler({DemoException.class})
