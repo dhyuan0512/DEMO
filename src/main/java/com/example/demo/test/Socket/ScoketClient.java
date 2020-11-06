@@ -22,7 +22,7 @@ public class ScoketClient {
         Socket s = new Socket("127.0.0.1", 8094);
         System.out.println("已连接到服务器8094端口，准备传送图片...");
         //获取图片字节流
-        InputStream fis = new FileInputStream("src\\img\\1_2.jpg");
+        InputStream fis = new FileInputStream("src/main/java/com/example/demo/test/Io/SocketService.java");
         //获取输出流
         //OutputStream out = s.getOutputStream();
         BufferedOutputStream bos = new BufferedOutputStream(s.getOutputStream());

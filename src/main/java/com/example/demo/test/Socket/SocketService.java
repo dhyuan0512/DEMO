@@ -25,7 +25,7 @@ public class SocketService {
         Socket s = ss.accept();
         System.out.println("检测到客户端");
         InputStream in = s.getInputStream();
-        FileOutputStream fos = new FileOutputStream("src\\com\\day1\\2.jpg");
+        FileOutputStream fos = new FileOutputStream("src/main/java/com/example/demo/test/Io/SocketService.java");
         byte[] buf = new byte[1024];
         int len = 0;
         while ((len = in.read(buf)) != -1) {
