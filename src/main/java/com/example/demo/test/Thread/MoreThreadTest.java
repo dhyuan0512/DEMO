@@ -1,5 +1,6 @@
 package com.example.demo.test.Thread;
 
+import com.alibaba.fastjson.JSON;
 import com.example.demo.bean.WechatUser;
 import com.example.demo.mapper.WechatUserMapper;
 import com.example.demo.serviceimpl.UserServiceImpl;

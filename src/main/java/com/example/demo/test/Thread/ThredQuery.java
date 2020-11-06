@@ -1,5 +1,6 @@
 package com.example.demo.test.Thread;
 
+import com.alibaba.fastjson.JSON;
 import com.example.demo.bean.WechatUser;
 import com.example.demo.serviceimpl.UserServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -34,8 +35,11 @@ public  class ThredQuery implements Callable<List<WechatUser>> {
         long start = System.currentTimeMillis();
         //通过service查询得到对应结果
         List<WechatUser> list = myService.pages(bindex, num);
+        for (WechatUser wechatUser : list) {
+            log.info("线程{},处理数据{}", Thread.currentThread().getName(),JSON.toJSONString(wechatUser));
+        }
         long end = System.currentTimeMillis();
-        log.info("线程{}处理数据{}条消耗{}毫秒\r\n",Thread.currentThread().getName(),list.size(),(end-start));
+        log.info("线程池中,单线程{}处理数据{}条消耗{}毫秒\r\n",Thread.currentThread().getName(),list.size(),(end-start));
         return list;
     }
 
