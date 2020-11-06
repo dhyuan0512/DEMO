@@ -9,7 +9,7 @@ public class DemoResult<T> implements Serializable {
     /**
      * 是否响应成功
      */
-    private String success;
+    private Boolean success;
     /**
      * 响应状态码
      */
@@ -29,7 +29,7 @@ public class DemoResult<T> implements Serializable {
      */
     private DemoResult() {
         this.code = "200";
-        this.success = DemoEnum.SUCCESS.getMessage();
+        this.success = true;
     }
     /**
      * 有参构造器
@@ -38,7 +38,7 @@ public class DemoResult<T> implements Serializable {
     private DemoResult(T obj) {
         this.code = "200";
         this.data = obj;
-        this.success = DemoEnum.SUCCESS.getMessage();
+        this.success = true;
     }
 
     /**
@@ -46,7 +46,7 @@ public class DemoResult<T> implements Serializable {
      * @param resultCode
      */
     private DemoResult(DemoEnum resultCode) {
-        this.success = resultCode.SUCCESS.getMessage();
+        this.success = true;
         this.code = resultCode.getCode();
         this.message = resultCode.getMessage();
     }
@@ -81,11 +81,11 @@ public class DemoResult<T> implements Serializable {
         return  new DemoResult<T>(resultCode);
     }
 
-    public String getSuccess() {
+    public Boolean getSuccess() {
         return success;
     }
 
-    public void setSuccess(String success) {
+    public void setSuccess(Boolean success) {
         this.success = success;
     }
 
