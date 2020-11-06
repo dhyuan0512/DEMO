@@ -1,5 +1,6 @@
 package com.example.demo.test.Socket;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,10 +12,11 @@ import java.io.InputStream;
 import java.net.Socket;
 
 @Controller
-@RequestMapping("api/socket/client/io")
+@RequestMapping("/api")
 public class ScoketClient {
 
-    @GetMapping("/set")
+    @GetMapping("/socket/client/io/set")
+    @ApiOperation("客户端接口")
     public void set() throws Exception {
         //1.连接诶服务器
         Socket s = new Socket("127.0.0.1", 8080);

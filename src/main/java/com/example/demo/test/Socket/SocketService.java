@@ -1,5 +1,6 @@
 package com.example.demo.test.Socket;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,10 +14,11 @@ import java.net.Socket;
 import java.util.Date;
 
 @Controller
-@RequestMapping("api/socket/service/io")
+@RequestMapping("/api")
 public class SocketService {
 
-    @GetMapping("get")
+    @GetMapping("/socket/service/io/get")
+    @ApiOperation("服务端接口")
     public void get() throws Exception {
         ServerSocket ss = new ServerSocket(8080);
         System.out.println("服务器端以及启动正在接受数据");
