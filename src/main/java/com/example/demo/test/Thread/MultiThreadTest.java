@@ -31,13 +31,13 @@ public class MultiThreadTest {
 
     public void messageThread() throws Exception {
         long start = System.currentTimeMillis();
-        List<WechatUser> idList = moreThreadTest.getMaxResult();
-        // List<WechatUser> idList = userService.page();
+        //List<WechatUser> idList = moreThreadTest.getMaxResult();
+        List<WechatUser> idList = userService.page();
         int threadNum = 10;
         ExecutorService executorService = Executors.newFixedThreadPool(threadNum);
         CountDownLatch countDownLatch = new CountDownLatch(threadNum);
         int perSize = idList.size() / threadNum;
-        log.info("多线程Insert.SQL处理数据开始,数据总数{}条,线程数量{}个\r\n", idList.size() , threadNum);
+        log.info("多线程Insert.SQL处理数据开始,数据总数{}条,线程数量{}个\r\n", idList.size(), threadNum);
         AtomicInteger successNum = new AtomicInteger(0);
         MultiThread thread = new MultiThread();
         for (int i = 0; i < threadNum; i++) {
@@ -61,7 +61,7 @@ public class MultiThreadTest {
 @Slf4j
 class MultiThread implements Runnable {
 
-     private List<WechatUser> idList;
+    private List<WechatUser> idList;
 
 //    private List<UserBean> idList;
 
