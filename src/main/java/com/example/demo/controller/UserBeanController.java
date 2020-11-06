@@ -12,10 +12,8 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -37,22 +35,22 @@ public class UserBeanController {
     @Autowired
     private MoreThreadTest moreThreadTest;
 
-    @RequestMapping("/index")
+    @GetMapping("/index")
     public String hello() {
         return "index";
     }
 
-    @RequestMapping("/login")
+    @GetMapping("/login")
     public String login() {
         return "login";
     }
 
-    @RequestMapping("/register")
+    @GetMapping("/register")
     public String register() {
         return "register";
     }
 
-    @RequestMapping(value = "/loginIn", method = RequestMethod.POST)
+    @PostMapping("/loginIn")
     public String login(String name, String password, HttpServletRequest request) {
         UserBean userBean = userBeanServiceImpl.loginIn(name, password);
         if (userBean != null) {
@@ -65,7 +63,7 @@ public class UserBeanController {
         }
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    @PostMapping("/register")
     public String getString(String name, String password) {
         List<UserBean> user = userBeanServiceImpl.selectInfo(name);
         if (user.size() != 0) {
