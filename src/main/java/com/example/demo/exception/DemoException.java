@@ -1,12 +1,12 @@
 package com.example.demo.exception;
 
-public class DemoExeption extends RuntimeException {
+public class DemoException extends RuntimeException {
 
     protected String code;
 
     protected String msg;
 
-    public DemoExeption(String code, String msg) {
+    public DemoException(String code, String msg) {
         this.code = code;
         this.msg = msg;
     }
