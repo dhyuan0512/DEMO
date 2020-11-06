@@ -4,7 +4,6 @@ package com.example.demo.test.Thread;
 import com.example.demo.bean.WechatUser;
 import com.example.demo.mapper.UserBeanMapper;
 import com.example.demo.serviceimpl.UserServiceImpl;
-import com.example.demo.vo.DemoResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

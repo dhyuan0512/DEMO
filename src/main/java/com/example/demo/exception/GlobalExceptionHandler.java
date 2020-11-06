@@ -19,17 +19,10 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public DemoResult handlerException(Exception e) {
         DemoEnum demoEnum;
-        // 自定义异常
-        if (e instanceof DemoExeption) {
-            demoEnum = DemoEnum.SERVER_ERROR;
-            demoEnum.setMessage(getConstraintViolationErrMsg(e));
-            log.error("demoException：{}", demoEnum.getMessage());
-        }else {
             // 其他异常，当我们定义了多个异常时，这里可以增加判断和记录
             demoEnum = DemoEnum.SERVER_ERROR;
             demoEnum.setMessage(e.getMessage());
             log.error("common exception:{}", JSON.toJSONString(e));
-        }
         return DemoResult.failure(demoEnum);
     }
 

@@ -19,8 +19,8 @@ public class ScoketClient {
     @ApiOperation("客户端接口")
     public void set() throws Exception {
         //1.连接诶服务器
-        Socket s = new Socket("127.0.0.1", 8080);
-        System.out.println("已连接到服务器9999端口，准备传送图片...");
+        Socket s = new Socket("127.0.0.1", 8094);
+        System.out.println("已连接到服务器8094端口，准备传送图片...");
         //获取图片字节流
         InputStream fis = new FileInputStream("src\\img\\1_2.jpg");
         //获取输出流

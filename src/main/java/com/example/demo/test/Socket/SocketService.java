@@ -20,7 +20,7 @@ public class SocketService {
     @GetMapping("/socket/service/io/get")
     @ApiOperation("服务端接口")
     public void get() throws Exception {
-        ServerSocket ss = new ServerSocket(8080);
+        ServerSocket ss = new ServerSocket(8094);
         System.out.println("服务器端以及启动正在接受数据");
         Socket s = ss.accept();
         System.out.println("检测到客户端");
