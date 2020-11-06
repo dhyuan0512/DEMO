@@ -56,7 +56,7 @@ public class UserBeanController {
         UserBean userBean = userBeanServiceImpl.loginIn(name, password);
         if (userBean != null) {
             //添加登录用户的Session
-            log.info("sessionId{},sessionValue{}",request.getSession().getId());
+            //log.info("sessionId：{}, sessionValue：{}",request.getSession().getId(),request.getSession()0);
             request.getSession().setAttribute(SessionUtils.USER_SESSION_KEY,userBean);
             return "success";
         } else {
