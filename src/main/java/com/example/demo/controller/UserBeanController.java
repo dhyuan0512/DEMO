@@ -6,7 +6,7 @@ import com.example.demo.service.UserBeanService;
 import com.example.demo.serviceimpl.UserServiceImpl;
 import com.example.demo.test.Thread.MoreThreadTest;
 import com.example.demo.test.Thread.MultiThreadTest;
-import com.example.demo.util.ConstantUtils;
+import com.example.demo.util.SessionUtils;
 import com.example.demo.vo.DemoResponse;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -56,7 +56,7 @@ public class UserBeanController {
         if (userBean != null) {
             //添加登录用户的Session
             log.info("sessionId{},sessionValue{}",request.getSession().getId());
-            request.getSession().setAttribute(ConstantUtils.USER_SESSION_KEY,userBean);
+            request.getSession().setAttribute(SessionUtils.USER_SESSION_KEY,userBean);
             return "success";
         } else {
             return "error";
