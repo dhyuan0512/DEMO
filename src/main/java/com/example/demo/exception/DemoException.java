@@ -55,7 +55,7 @@ public class DemoException extends RuntimeException {
 
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("CommonException [code=");
+        builder.append("DemoException [code=");
         builder.append(this.getCode());
         builder.append(", message=");
         builder.append(this.getMessage());
