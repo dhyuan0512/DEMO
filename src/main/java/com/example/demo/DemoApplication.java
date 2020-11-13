@@ -36,6 +36,8 @@ public class DemoApplication {
             try {
                 //获取本机内网IP
                 log.info("启动成功：" + "http://" + InetAddress.getLocalHost().getHostAddress() + ":" + port);
+                //获取本机Swagger
+                log.info("启动成功Swagger：" + "http://" + InetAddress.getLocalHost().getHostAddress() + ":" + port+"/swagger-ui.html");
             } catch (UnknownHostException e) {
                 //输出到日志文件中
                 log.error(e.getMessage());
