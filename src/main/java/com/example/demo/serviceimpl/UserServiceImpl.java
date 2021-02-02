@@ -41,6 +41,11 @@ public class UserServiceImpl implements UserBeanService {
     }
 
     @Override
+    public List<WechatUser> imageAll(Integer pageSize) {
+        return wechatUserMapper.selectImage(pageSize);
+    }
+
+    @Override
     public List<WechatUser> pages(int bindex, int num) {
         return wechatUserMapper.pages(bindex, num);
     }

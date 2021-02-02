@@ -18,6 +18,8 @@ public interface WechatUserMapper {
 
     WechatUser selectByPrimaryKey(WechatUserKey key);
 
+    List<WechatUser> selectImage(Integer pageSize);
+
     List<WechatUser> page();
 
     int updateByPrimaryKeySelective(WechatUser record);

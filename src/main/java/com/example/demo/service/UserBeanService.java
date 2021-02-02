@@ -16,6 +16,8 @@ public interface UserBeanService {
 
     List<WechatUser> page();
 
+    List<WechatUser>  imageAll(Integer pageSize);
+
     List<WechatUser> pages(int bindex, int num);
 
     int insert(UserBean record);

@@ -54,6 +54,10 @@
     select count(*) from wechat_user
   </select>
 
+    <select id="selectImage" parameterType="java.lang.Integer" resultType="com.example.demo.bean.WechatUser">
+    select * from  wechat_user limit 0,#{pageSize}
+    </select>
+
     <delete id="deleteByPrimaryKey" parameterType="com.example.demo.bean.WechatUserKey">
     delete from wechat_user
     where ep_num = #{epNum,jdbcType=VARCHAR}

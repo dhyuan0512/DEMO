@@ -13,10 +13,13 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -57,7 +60,7 @@ public class UserBeanController {
         if (userBean != null) {
             //添加登录用户的Session
             //log.info("sessionId：{}, sessionValue：{}",request.getSession().getId(),request.getSession()0);
-            request.getSession().setAttribute(SessionUtils.USER_SESSION_KEY,userBean);
+            request.getSession().setAttribute(SessionUtils.USER_SESSION_KEY, userBean);
             return "success";
         } else {
             return "error";
@@ -89,7 +92,7 @@ public class UserBeanController {
     @ResponseBody
     @ApiOperation(value = "多线程获取数据")
     public DemoResponse<List<WechatUser>> getMessage() throws Exception {
-        List<WechatUser>  maxResult = moreThreadTest.getMaxResult();
+        List<WechatUser> maxResult = moreThreadTest.getMaxResult();
         return DemoResponseUtils.success(maxResult);
     }
 
@@ -99,9 +102,21 @@ public class UserBeanController {
         long start = System.currentTimeMillis();
         List<WechatUser> page = userService.page();
         long end = System.currentTimeMillis();
-        log.info("单线程获取数据{}条,处理时间{}ms",page.size(),(end-start));
-        return page ;
+        log.info("单线程获取数据{}条,处理时间{}ms", page.size(), (end - start));
+        return page;
     }
+
+    @GetMapping("/get/image")
+    @ResponseBody
+    public List<WechatUser> getImage(@RequestParam Integer pageSize) throws Exception {
+        long start = System.currentTimeMillis();
+        List<WechatUser> list = userService.imageAll(pageSize);
+        list.removeAll(Collections.singleton(null));
+        long end = System.currentTimeMillis();
+        log.info("单线程获取数据{}条,处理时间{}ms", list.size(), (end - start));
+        return list;
+    }
+
 }
 
 
