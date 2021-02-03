@@ -91,9 +91,9 @@ public class UserBeanController {
     @GetMapping("/getThread")
     @ResponseBody
     @ApiOperation(value = "多线程获取数据")
-    public DemoResponse<List<WechatUser>> getMessage() throws Exception {
+    public List<WechatUser> getMessage() throws Exception {
         List<WechatUser> maxResult = moreThreadTest.getMaxResult();
-        return DemoResponseUtils.success(maxResult);
+        return maxResult;
     }
 
     @GetMapping("/get")
