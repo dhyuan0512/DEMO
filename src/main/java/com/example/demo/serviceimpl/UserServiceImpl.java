@@ -5,6 +5,7 @@ import com.example.demo.bean.WechatUser;
 import com.example.demo.mapper.UserBeanMapper;
 import com.example.demo.mapper.WechatUserMapper;
 import com.example.demo.service.UserBeanService;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,9 @@ public class UserServiceImpl implements UserBeanService {
 
     @Autowired
     private UserBeanMapper userBeanMapper;
+
+    @Autowired
+    AmqpTemplate amqpTemplate;
 
     @Override
     public UserBean loginIn(String name, String password) {
@@ -37,6 +41,7 @@ public class UserServiceImpl implements UserBeanService {
 
     @Override
     public List<WechatUser> page() {
+        amqpTemplate.convertAndSend("调用接口队列", "调用接口队列");
         return wechatUserMapper.page();
     }
 

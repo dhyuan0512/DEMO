@@ -2,6 +2,7 @@ package com.example.demo;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
+import org.springframework.amqp.core.Queue;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -43,5 +44,12 @@ public class DemoApplication {
                 log.error(e.getMessage());
             }
         };
+    }
+
+
+    @Bean
+    public Queue getQueue() {
+        Queue queue = new Queue("orderQueue", true);
+        return queue;
     }
 }
