@@ -46,10 +46,4 @@ public class DemoApplication {
         };
     }
 
-
-    @Bean
-    public Queue getQueue() {
-        Queue queue = new Queue("orderQueue", true);
-        return queue;
-    }
 }
