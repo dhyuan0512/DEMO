@@ -2,7 +2,6 @@ package com.example.demo;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.amqp.core.Queue;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
@@ -38,7 +37,7 @@ public class DemoApplication {
                 //获取本机内网IP
                 log.info("启动成功：" + "http://" + InetAddress.getLocalHost().getHostAddress() + ":" + port);
                 //获取本机Swagger
-                log.info("启动成功Swagger：" + "http://" + InetAddress.getLocalHost().getHostAddress() + ":" + port+"/swagger-ui.html");
+                log.info("启动成功Swagger：" + "http://" + InetAddress.getLocalHost().getHostAddress() + ":" + port + "/swagger-ui.html");
             } catch (UnknownHostException e) {
                 //输出到日志文件中
                 log.error(e.getMessage());
